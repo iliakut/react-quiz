@@ -86,8 +86,13 @@ class Quiz extends Component {
     return this.state.activeQuestion + 1 === this.state.quiz.length;
   }
 
+  componentWillMount() {
+  }
+
 
   render() {
+    console.log('Quiz ID ', this.props.match.params.id);
+
     return (
       <div className={classes.Quiz}>
         <div className={classes.QuizWrapper}>
