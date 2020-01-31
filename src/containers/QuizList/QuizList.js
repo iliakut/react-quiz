@@ -23,7 +23,9 @@ class QuizList extends Component {
       <div className={classes.QuizList}>
         <div>
           <h1>Quiz List</h1>
-          {this.renderQuizer()}
+          <ul>
+            {this.renderQuizer()}
+          </ul>
         </div>
       </div>
     );
