@@ -6,6 +6,7 @@ import Input from '../../components/UI/Input/Input.js'
 class Auth extends Component {
 
   state = {
+    isFormValid: false,
     formControls: {
       email: {
         value: '',
@@ -46,10 +47,48 @@ class Auth extends Component {
     e.preventDefault();
   };
 
-  onChangeHandler = (event, name) => {
-    console.log(name, event.target.value);
+  validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
 
+  validateControl(value, validation) {
+    if (!validation) return true;
+
+    let isValid = true;
+
+    if (validation.required) {
+      isValid = value.trim() !== '' && isValid;
+    }
+
+    if (validation.email) {
+      isValid = this.validateEmail(value) && isValid;
+    }
+
+    if (validation.minLength) {
+      isValid = value.length >= validation.minLength && isValid;
+    }
+
+    return isValid;
   }
+
+  onChangeHandler = (event, name) => {
+    const formControls = {...this.state.formControls};
+    const control = {...formControls[name]};
+
+    control.value = event.target.value;
+    control.touched = true;
+    control.valid = this.validateControl(control.value, control.validation);
+    formControls[name] = control;
+
+    const isFormValid = Object.keys(formControls).every(name => {
+      return formControls[name].valid;
+    });
+
+    this.setState({
+      formControls, isFormValid
+    })
+  };
 
   renderInputs() {
     return Object.keys(this.state.formControls).map((name, index) => {
@@ -87,12 +126,14 @@ class Auth extends Component {
             <Button
               type="success"
               onClick={this.loginHandler}
+              disabled={!this.state.isFormValid}
             >
               Log in
             </Button>
             <Button
               type="primary"
               onClick={this.signinHandler}
+              disabled={!this.state.isFormValid}
             >
               Sign in
             </Button>

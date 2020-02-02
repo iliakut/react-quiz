@@ -11,9 +11,6 @@ const links = [
 ];
 
 class Drawer extends Component {
-  constructor() {
-    super();
-  }
 
   clickHandler = () => {
     this.props.onCloseBackdrop();
