@@ -47,7 +47,7 @@ const FinishedQuiz = props => {
           <Button
             type="success"
           >
-            Go to  questions list
+            Go to  quizes list
           </Button>
         </Link>
       </div>

@@ -5,12 +5,13 @@ import {createControl, validate, validateForm} from '../../form/formFramework.js
 import Input from "../../components/UI/Input/Input";
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary.js";
 import Select from "../../components/UI/Select/Select";
-import Axios from "axios";
+import axios from '../../axios/axios-quiz.js';
 
 function createOptionControl(number) {
    return createControl({
      label: `Option ${number}`,
-     errorMessage:  'Can not be empty'
+     errorMessage:  'Can not be empty',
+     id: number,
    }, {required: true})
 };
 
@@ -73,7 +74,7 @@ class QuizCreator extends Component {
     event.preventDefault();
 
     try {
-      await Axios.post('https://react-quiz-5e0d2.firebaseio.com/quizes.json', this.state.quiz)
+      await axios.post('quizes.json', this.state.quiz);
 
       this.setState({
         quiz: [],

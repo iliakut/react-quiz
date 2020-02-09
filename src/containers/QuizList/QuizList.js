@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import classes from './QuizList.module.css'
 import {NavLink} from 'react-router-dom';
 import Loader from '../../components/UI/Loader/Loader.js'
-import Axios from "axios";
+import axios from '../../axios/axios-quiz.js';
 
 class QuizList extends Component {
 
@@ -27,7 +27,7 @@ class QuizList extends Component {
 
   async componentDidMount() {
     try {
-      const response = await Axios.get('https://react-quiz-5e0d2.firebaseio.com/quizes.json');
+      const response = await axios.get('quizes.json');
 
       const quizes = [];
       Object.keys(response.data).forEach((key, index) => {
