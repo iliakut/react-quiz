@@ -86,6 +86,10 @@ class Quiz extends Component {
     return this.state.activeQuestion + 1 === this.state.quiz.length;
   }
 
+  async componentDidMount() {
+
+  }
+
   componentWillMount() {
   }
 
