@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import classes from './Auth.module.css'
 import Button from '../../components/UI/Button/Button.js'
 import Input from '../../components/UI/Input/Input.js'
+import axios from 'axios';
 
 class Auth extends Component {
 
@@ -35,12 +36,33 @@ class Auth extends Component {
     }
   };
 
-  loginHandler = () => {
-
+  loginHandler = async () => {
+    const authData = {
+      email: this.state.formControls.email.value,
+      password: this.state.formControls.password.value,
+      token: '',
+      returnSecureToken: true,
+    };
+    try {
+      const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBHN_4wmq6rlFdZUl4feWsLTKVnmNZY2Fs', authData);
+      console.log(response.data);
+    } catch (e) {
+      console.warn(e)
+    };
   };
 
-  signinHandler = () => {
-
+  registerHandler = async () => {
+    const authData = {
+      email: this.state.formControls.email.value,
+      password: this.state.formControls.password.value,
+      returnSecureToken: true,
+    };
+    try {
+      const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBHN_4wmq6rlFdZUl4feWsLTKVnmNZY2Fs', authData);
+      console.log(response.data);
+    } catch (e) {
+      console.warn(e)
+    };
   };
 
   submitHandler = e => {
@@ -132,10 +154,10 @@ class Auth extends Component {
             </Button>
             <Button
               type="primary"
-              onClick={this.signinHandler}
+              onClick={this.registerHandler}
               disabled={!this.state.isFormValid}
             >
-              Sign in
+              Register
             </Button>
           </form>
         </div>
