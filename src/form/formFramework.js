@@ -23,9 +23,11 @@ export function validate(value, validation = null) {
 }
 
 export function validateForm(formControls) {
-  let isFormValid = true;
+  let isFormValid;
 
-  return isFormValid = Object.keys(formControls).every(name => {
+  isFormValid = Object.keys(formControls).every(name => {
     return formControls[name].valid;
   });
+
+  return isFormValid;
 }
