@@ -1,4 +1,4 @@
-import {FETCH_QUIZES_START, FETCH_QUIZES_SUCCESS, FETCH_QUIZES_ERROR} from './../actions/actionTypes.js'
+import {FETCH_QUIZES_START, FETCH_QUIZES_SUCCESS, FETCH_QUIZES_ERROR} from '../actions/actionTypes.js'
 
 const initialState = {
   quizes: [],
