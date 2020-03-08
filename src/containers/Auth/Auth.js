@@ -3,7 +3,7 @@ import classes from './Auth.module.css'
 import Button from '../../components/UI/Button/Button.js'
 import Input from '../../components/UI/Input/Input.js'
 import axios from 'axios';
-import key from '../../../key'
+import key from '../../key'
 
 
 class Auth extends Component {
