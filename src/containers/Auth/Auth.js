@@ -3,6 +3,7 @@ import classes from './Auth.module.css'
 import Button from '../../components/UI/Button/Button.js'
 import Input from '../../components/UI/Input/Input.js'
 import axios from 'axios';
+import key from '../../../key'
 
 class Auth extends Component {
 
@@ -44,7 +45,7 @@ class Auth extends Component {
       returnSecureToken: true,
     };
     try {
-      const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBHN_4wmq6rlFdZUl4feWsLTKVnmNZY2Fs', authData);
+      const response = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${key}`, authData);
       console.log(response.data);
     } catch (e) {
       console.warn(e)
@@ -58,7 +59,7 @@ class Auth extends Component {
       returnSecureToken: true,
     };
     try {
-      const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBHN_4wmq6rlFdZUl4feWsLTKVnmNZY2Fs', authData);
+      const response = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}`, authData);
       console.log(response.data);
     } catch (e) {
       console.warn(e)
