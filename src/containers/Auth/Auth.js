@@ -5,6 +5,7 @@ import Input from '../../components/UI/Input/Input.js'
 import axios from 'axios';
 import key from '../../../key'
 
+
 class Auth extends Component {
 
   state = {
