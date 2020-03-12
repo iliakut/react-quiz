@@ -5,6 +5,7 @@ import Input from '../../components/UI/Input/Input.js'
 import axios from 'axios';
 import key from '../../key'
 import {connect} from "react-redux";
+import {auth} from "../../store/actions/auth";
 
 
 class Auth extends Component {
@@ -45,13 +46,6 @@ class Auth extends Component {
       this.state.formControls.password.value,
       true
     );
-
-    // try {
-    //   const response = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${key}`, authData);
-    //   console.log(response.data);
-    // } catch (e) {
-    //   console.warn(e)
-    // };
   };
 
   registerHandler = () => {
