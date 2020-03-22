@@ -69,5 +69,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ### Demo
 
-https://react-quiz-5e0d2.web.app/
-https://react-quiz-5e0d2.firebaseapp.com/
+https://react-quiz-5e0d2.web.app/  - web application
+
+https://react-quiz-5e0d2.firebaseapp.com/ - firebase application 
